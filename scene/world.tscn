@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://be56ke7a55lmw"]
+
+[ext_resource type="PackedScene" uid="uid://cc24vaciyhn2h" path="res://model/sungisa.glb" id="1_b67xk"]
+[ext_resource type="Script" path="res://scene/Camera.cs" id="2_pax68"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_akm0h"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_663r7"]
+sky_material = SubResource("ProceduralSkyMaterial_akm0h")
+
+[sub_resource type="Environment" id="Environment_qll7b"]
+background_mode = 2
+sky = SubResource("Sky_663r7")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sdkfk"]
+albedo_color = Color(0.260506, 0.260506, 0.260506, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_eyan2"]
+
+[node name="World" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qll7b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(9.37725, 0, 0, 0, 1, 0, 0, 0, 9.34624, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_sdkfk")
+mesh = SubResource("PlaneMesh_eyan2")
+
+[node name="Knight" type="Node3D" parent="."]
+
+[node name="sungisa" parent="Knight" instance=ExtResource("1_b67xk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.615881, 0, -3.50834)
+
+[node name="camera_base" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.05316, 0, 0, 0, 1, 0, 3.40716, 0)
+script = ExtResource("2_pax68")
+
+[node name="camera_socket" type="Node3D" parent="camera_base"]
+
+[node name="Camera3D" type="Camera3D" parent="camera_base/camera_socket"]
+transform = Transform3D(1, 0, 0, 0, 0.688567, 0.653809, 0, -0.688567, 0.725173, 0, 0, 0)

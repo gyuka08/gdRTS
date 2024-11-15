@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuniRTS", "FuniRTS.csproj", "{D6BF4842-0C72-4A34-8B4F-06375B740439}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D6BF4842-0C72-4A34-8B4F-06375B740439}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6BF4842-0C72-4A34-8B4F-06375B740439}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6BF4842-0C72-4A34-8B4F-06375B740439}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{D6BF4842-0C72-4A34-8B4F-06375B740439}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{D6BF4842-0C72-4A34-8B4F-06375B740439}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{D6BF4842-0C72-4A34-8B4F-06375B740439}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal
