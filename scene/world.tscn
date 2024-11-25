@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://be56ke7a55lmw"]
+[gd_scene load_steps=9 format=3 uid="uid://be56ke7a55lmw"]
 
 [ext_resource type="PackedScene" uid="uid://cc24vaciyhn2h" path="res://model/sungisa.glb" id="1_b67xk"]
-[ext_resource type="Script" path="res://scene/Camera.cs" id="2_pax68"]
+[ext_resource type="Script" path="res://script/Camera.cs" id="2_pax68"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_akm0h"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -20,6 +20,8 @@ glow_enabled = true
 albedo_color = Color(0.260506, 0.260506, 0.260506, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_eyan2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5sv44"]
 
 [node name="World" type="Node3D"]
 
@@ -40,11 +42,18 @@ mesh = SubResource("PlaneMesh_eyan2")
 [node name="sungisa" parent="Knight" instance=ExtResource("1_b67xk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.615881, 0, -3.50834)
 
-[node name="camera_base" type="Node3D" parent="."]
+[node name="CameraBase" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.05316, 0, 0, 0, 1, 0, 3.40716, 0)
 script = ExtResource("2_pax68")
 
-[node name="camera_socket" type="Node3D" parent="camera_base"]
+[node name="CameraSocket" type="Node3D" parent="CameraBase"]
 
-[node name="Camera3D" type="Camera3D" parent="camera_base/camera_socket"]
+[node name="Camera3D" type="Camera3D" parent="CameraBase/CameraSocket"]
 transform = Transform3D(1, 0, 0, 0, 0.688567, 0.653809, 0, -0.688567, 0.725173, 0, 0, 0)
+
+[node name="Box" type="Node3D" parent="."]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.940755)
+mesh = SubResource("BoxMesh_5sv44")
+skeleton = NodePath("../..")
