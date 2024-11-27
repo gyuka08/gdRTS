@@ -1,3 +1,9 @@
+
+
+// UNDER CONSTRUCTION
+
+
+
 using Godot;
 using System;
 using System.Dynamic;
@@ -23,6 +29,7 @@ public partial class Camera : Node3D
 	bool cameraCanMoveBase = true;
 	bool cameraCanProcess = true;
 	bool cameraCanZoom = true;
+	bool cameraCanRotate = true;
 
 	public override void _Ready()
 	{
@@ -66,6 +73,17 @@ public partial class Camera : Node3D
 
 		float newZoom = camera.Position.Z + CameraZoomSpeed * cameraZoomDirection * (float)delta;
 		// Position.Z = newZoom;
+
+	}
+
+	public void cameraBaseRotate(double delta) {
+		if(!cameraCanRotate) return;
+
+
+	}
+
+	public void cameraBaseRotateHorizontal(double delta, double direction) {
+		// Rotation.Y += direction * cameraRotation *  delta;
 
 	}
 }

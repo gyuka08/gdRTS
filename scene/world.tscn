@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://be56ke7a55lmw"]
 
 [ext_resource type="PackedScene" uid="uid://cc24vaciyhn2h" path="res://model/sungisa.glb" id="1_b67xk"]
-[ext_resource type="Script" path="res://script/Camera.cs" id="2_pax68"]
+[ext_resource type="Script" path="res://script/camera.gd" id="2_bleki"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_akm0h"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -44,7 +44,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.615881, 0, -3.50834)
 
 [node name="CameraBase" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.05316, 0, 0, 0, 1, 0, 3.40716, 0)
-script = ExtResource("2_pax68")
+script = ExtResource("2_bleki")
 
 [node name="CameraSocket" type="Node3D" parent="CameraBase"]
 
