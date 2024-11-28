@@ -43,7 +43,7 @@ mesh = SubResource("PlaneMesh_eyan2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.615881, 0, -3.50834)
 
 [node name="CameraBase" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.05316, 0, 0, 0, 1, 0, 3, 0)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1.05316, 0, -0.707107, 0, 0.707107, 0.0127718, 2.99432, -0.00140977)
 script = ExtResource("2_bleki")
 
 [node name="CameraSocket" type="Node3D" parent="CameraBase"]
@@ -52,10 +52,33 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 [node name="Camera3D" type="Camera3D" parent="CameraBase/CameraSocket"]
 transform = Transform3D(1, 0, 0, 0, 0.973782, -0.0504597, 0, 0, 0.975088, 0, 0, 0)
 
-[node name="Box" type="Node3D" parent="."]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+[node name="Ego Colony" type="Node3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 2.5, -8)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Box"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000883675, 0.498053, -1.44858)
+[node name="Box" type="Node3D" parent="Ego Colony"]
+transform = Transform3D(0.4, 0, 0, 0, 1, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Ego Colony/Box"]
 mesh = SubResource("BoxMesh_5sv44")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
+
+[node name="Box2" type="Node3D" parent="Ego Colony"]
+transform = Transform3D(1.6, 0, 0, 0, 0.1, 0, 0, 0, 1.6, 0, -0.44, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Ego Colony/Box2"]
+mesh = SubResource("BoxMesh_5sv44")
+skeleton = NodePath("../../..")
+
+[node name="Box3" type="Node3D" parent="Ego Colony"]
+transform = Transform3D(1.12, 0, 0, 0, 0.1, 0, 0, 0, 1.12, 0, 0.36, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Ego Colony/Box3"]
+mesh = SubResource("BoxMesh_5sv44")
+skeleton = NodePath("../../..")
+
+[node name="Box4" type="Node3D" parent="Ego Colony"]
+transform = Transform3D(1.68, 0, 0, 0, 0.1, 0, 0, 0, 1.68, 0, 0.16, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Ego Colony/Box4"]
+mesh = SubResource("BoxMesh_5sv44")
+skeleton = NodePath("../../..")

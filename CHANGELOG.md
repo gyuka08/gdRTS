@@ -4,6 +4,7 @@
 - Gameplay
     - Added New Camera feature
         - Move Camera with Mouse cursor on edge of display
+        - Pan Camera with ,. Keys
 
 ### 2024-11-27
 - Tech
