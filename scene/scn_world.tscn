@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://be56ke7a55lmw"]
+
+[ext_resource type="Script" path="res://script/scr_console.gd" id="1_58dp1"]
+[ext_resource type="Texture2D" uid="uid://dyinfs4hsp678" path="res://image/img_selection_box.png" id="2_w7phb"]
+[ext_resource type="PackedScene" uid="uid://xkm15roqokq6" path="res://scene/scn_test_unit.tscn" id="3_7jlxy"]
+[ext_resource type="Script" path="res://script/scr_camera.gd" id="4_081p2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fbpml"]
+size = Vector3(35, 1, 35)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_akm0h"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_663r7"]
+sky_material = SubResource("ProceduralSkyMaterial_akm0h")
+
+[sub_resource type="Environment" id="Environment_qll7b"]
+background_mode = 2
+sky = SubResource("Sky_663r7")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sdkfk"]
+albedo_color = Color(0.260506, 0.260506, 0.260506, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_eyan2"]
+
+[node name="World" type="Node3D"]
+
+[node name="Console" type="Node2D" parent="."]
+position = Vector2(8, 8)
+script = ExtResource("1_58dp1")
+
+[node name="SelectionBox" type="NinePatchRect" parent="Console"]
+offset_right = 200.0
+offset_bottom = 64.0
+texture = ExtResource("2_w7phb")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Button" type="Button" parent="Console"]
+offset_right = 193.0
+offset_bottom = 31.0
+text = "실험적 사용자 인터페이스"
+metadata/_edit_lock_ = true
+
+[node name="CameraBase" type="Node3D" parent="Console"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1.05316, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+script = ExtResource("4_081p2")
+
+[node name="CameraSocket" type="Node3D" parent="Console/CameraBase"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0.0286258, 3.00007, -0.00532365)
+
+[node name="Camera3D" type="Camera3D" parent="Console/CameraBase/CameraSocket"]
+transform = Transform3D(1, 0, 0, 0, 0.973782, -0.0504597, 0, 0, 0.975088, 0, 0, 0)
+fov = 60.0
+
+[node name="UnitVision" type="Area3D" parent="Console/CameraBase"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0.196896, 0.474762, -14.14)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Console/CameraBase/UnitVision"]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_fbpml")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qll7b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(9.37725, 0, 0, 0, 1, 0, 0, 0, 9.34624, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_sdkfk")
+mesh = SubResource("PlaneMesh_eyan2")
+
+[node name="TestUnit" parent="." instance=ExtResource("3_7jlxy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.78898, 0, -3.59135)

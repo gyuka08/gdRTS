@@ -29,11 +29,11 @@ var camera_zoom_direction : int = 0;
 
 
 # Flags
-var camera_can_move_base : bool = true;
+var camera_can_move_base : bool = false;
 var camera_can_process : bool = true;
 var camera_can_zoom : bool = true;
 var camera_can_rotate : bool = true;
-var camera_can_rotate_base : bool = true;
+var camera_can_rotate_base : bool = false;
 var camera_can_automatic_pan : bool = true;
 
 
@@ -58,7 +58,7 @@ func _unhandled_input(event : InputEvent) -> void:
 	if event.is_action("camera_zoom_in") : camera_zoom_direction = -1;
 	if event.is_action("camera_zoom_out") : camera_zoom_direction = 1;
 
-
+	# 카메라 회전 제어
 	if event.is_action_pressed("camera_rotate_right"):
 		camera_rotation_direction = -1;
 		camera_is_rotating_base = true;
@@ -113,7 +113,7 @@ func camera_automatic_pan(delta : float) -> void:
 	var viewport_size : Vector2i = viewport_visible_rectangle.size;
 	var current_cursor_position : Vector2 = viewport_current.get_mouse_position();
 	var margin : float = camera_automatic_pan_margin; #Shortcut
-	var zoom_factor : float = camera.position.z * 0.1;
+	var zoom_factor : float = camera.position.z * 0.2;
 
 	# Pan X
 	if (current_cursor_position.x < margin) or (current_cursor_position.x > viewport_size.x - margin) : 

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cc24vaciyhn2h"
-path="res://.godot/imported/sungisa.glb-eae9fe14329d90d60e9945c5e0365688.scn"
+path="res://.godot/imported/mdl_dummy.glb-857f19971e6e079dce94f6134200a6d4.scn"
 
 [deps]
 
-source_file="res://model/sungisa.glb"
-dest_files=["res://.godot/imported/sungisa.glb-eae9fe14329d90d60e9945c5e0365688.scn"]
+source_file="res://model/mdl_dummy.glb"
+dest_files=["res://.godot/imported/mdl_dummy.glb-857f19971e6e079dce94f6134200a6d4.scn"]
 
 [params]
 
