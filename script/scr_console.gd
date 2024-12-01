@@ -8,6 +8,14 @@ extends Node2D
 @onready var visible_units : Dictionary = {}
 # {unit_id : unit_node}
 
+# Constants
+const SELECTION_BOX_MIN : int = 164
+
+# Internal Variables
+var mouse_left_click : bool = false
+var drag_box_area : Rect2
+
+
 func _ready():
 	initialize_interface()
 
@@ -40,5 +48,40 @@ func initialize_interface() -> void:
 	camera_unit_vision_area.body_exited.connect(unit_exited)
 
 
-func _process(delta : float):
+func _input(event : InputEvent) -> void:
+	if Input.is_action_just_pressed("mouse_left_click"):
+		drag_box_area.position = get_global_mouse_position()
+		selection_box.position = drag_box_area.position
+		mouse_left_click = true
+	if Input.is_action_just_released("mouse_left_click"):
+		mouse_left_click = false
+		cast_selection()
+
+
+func cast_selection() -> void:
 	pass
+
+
+func update_selection_box() -> void:
+	selection_box.size = abs(drag_box_area.size)
+
+	if drag_box_area.size.x > 0:
+		selection_box.scale.x = 1
+	else:
+		selection_box.scale.x = -1
+
+	if drag_box_area.size.y > 0:
+		selection_box.scale.y = 1
+	else:
+		selection_box.scale.y = -1
+
+func _process(delta : float) -> void:
+	if mouse_left_click :
+		if !selection_box.visible:
+			if drag_box_area.size.length_squared() > SELECTION_BOX_MIN:
+				selection_box.visible = true
+
+		else :
+			update_selection_box()
+
+		drag_box_area.size = get_global_mouse_position() - drag_box_area.position

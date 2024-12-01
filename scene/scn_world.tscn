@@ -33,8 +33,10 @@ position = Vector2(8, 8)
 script = ExtResource("1_58dp1")
 
 [node name="SelectionBox" type="NinePatchRect" parent="Console"]
-offset_right = 200.0
-offset_bottom = 64.0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 64.0
+offset_bottom = 40.0
 texture = ExtResource("2_w7phb")
 patch_margin_left = 4
 patch_margin_top = 4
@@ -73,7 +75,7 @@ shadow_enabled = true
 environment = SubResource("Environment_qll7b")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(9.37725, 0, 0, 0, 1, 0, 0, 0, 9.34624, 0, 0, 0)
+transform = Transform3D(9.37725, 0, 0, 0, 1, 0, 0, 0, 9.34624, -0.0565491, 0.0110984, 0.0283167)
 material_override = SubResource("StandardMaterial3D_sdkfk")
 mesh = SubResource("PlaneMesh_eyan2")
 
