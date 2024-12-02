@@ -55,11 +55,16 @@ func _input(event : InputEvent) -> void:
 		mouse_left_click = true
 	if Input.is_action_just_released("mouse_left_click"):
 		mouse_left_click = false
+		selection_box.visible = false
 		cast_selection()
 
 
 func cast_selection() -> void:
-	pass
+	for unit in visible_units.values():
+		if drag_box_area.abs().has_point( player_camera.get_vector2_from_vector3(unit.transform.origin) ) :
+			unit.selected()
+		else:
+			unit.deselect()
 
 
 func update_selection_box() -> void:
@@ -77,11 +82,9 @@ func update_selection_box() -> void:
 
 func _process(delta : float) -> void:
 	if mouse_left_click :
+		drag_box_area.size = get_global_mouse_position() - drag_box_area.position
+		update_selection_box()
+
 		if !selection_box.visible:
 			if drag_box_area.size.length_squared() > SELECTION_BOX_MIN:
 				selection_box.visible = true
-
-		else :
-			update_selection_box()
-
-		drag_box_area.size = get_global_mouse_position() - drag_box_area.position

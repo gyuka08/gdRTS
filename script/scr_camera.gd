@@ -129,3 +129,7 @@ func camera_automatic_pan(delta : float) -> void:
 			pan_direction.y = 1;
 		
 		translate(Vector3(0, 0, pan_direction.y * camera_automatic_pan_speed * zoom_factor * delta));
+
+
+func get_vector2_from_vector3(vec3 : Vector3) -> Vector2:
+	return camera.unproject_position(vec3)

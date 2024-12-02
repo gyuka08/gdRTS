@@ -1,5 +1,9 @@
 # Change Log
 
+## 2024-11-28
+- Gameplay
+    - Now can Select unit with click-drag box
+
 ### 2024-11-28
 - Gameplay
     - Added New Camera feature
@@ -12,11 +16,11 @@
         - Move Camera base with Arrow Keys
         - Zoom Camera with Mouse wheel
 
-
 ### 2024-11-26
 - Tech
     - Decided to Change camera script from C# to GDScript
         - Position.Z = newZoom; is not working in C# somehow
+
 
 ## 2024-11-25
 - Initial Commit
