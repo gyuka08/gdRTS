@@ -26,7 +26,7 @@ func unit_entered(u : Node3D) -> void :
 
 	visible_units[unit_id] = u.get_parent()
 	print("unit entered : ", u , " id : ", unit_id, " unit node : ", u.get_parent())
-	debug_units_visible()
+	# debug_units_visible()
 
 
 func unit_exited(u : Node3D) -> void :
@@ -35,7 +35,7 @@ func unit_exited(u : Node3D) -> void :
 	
 	visible_units.erase(unit_id)
 	print("unit exited : ", u , " id : ", unit_id, " unit node : ", u.get_parent())
-	debug_units_visible()
+	# debug_units_visible()
 
 
 func debug_units_visible() -> void : 
@@ -61,10 +61,11 @@ func _input(event : InputEvent) -> void:
 
 func cast_selection() -> void:
 	for unit in visible_units.values():
-		if drag_box_area.abs().has_point( player_camera.get_vector2_from_vector3(unit.transform.origin) ) :
-			unit.selected()
-		else:
-			unit.deselect()
+		if unit is CharacterBody3D:
+			if drag_box_area.abs().has_point( player_camera.get_vector2_from_vector3(unit.transform.origin) ) :
+				unit.selected()
+			else:
+				unit.deselect()
 
 
 func update_selection_box() -> void:

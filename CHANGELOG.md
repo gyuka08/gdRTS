@@ -1,6 +1,12 @@
 # Change Log
 
-## 2024-11-28
+# 2024-12-03
+- Gameplay
+    - Now can move units with LMB
+    - Unit Drag Selection Disabled
+
+
+## 2024-12-02
 - Gameplay
     - Now can Select unit with click-drag box
 

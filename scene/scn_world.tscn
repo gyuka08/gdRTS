@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://be56ke7a55lmw"]
+[gd_scene load_steps=13 format=3 uid="uid://be56ke7a55lmw"]
 
 [ext_resource type="Script" path="res://script/scr_console.gd" id="1_58dp1"]
 [ext_resource type="Texture2D" uid="uid://dyinfs4hsp678" path="res://image/img_selection_box.png" id="2_w7phb"]
@@ -21,10 +21,17 @@ sky = SubResource("Sky_663r7")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_0anmq"]
+vertices = PackedVector3Array(-8.87725, 0.5, -8.84624, -8.87725, 0.5, 8.90376, 8.87275, 0.5, 8.90376, 8.87275, 0.5, -8.84624)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sdkfk"]
 albedo_color = Color(0.260506, 0.260506, 0.260506, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_eyan2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_20p7d"]
+size = Vector3(2, 0.5, 2)
 
 [node name="World" type="Node3D"]
 
@@ -74,11 +81,6 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_qll7b")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(9.37725, 0, 0, 0, 1, 0, 0, 0, 9.34624, -0.0565491, 0.0110984, 0.0283167)
-material_override = SubResource("StandardMaterial3D_sdkfk")
-mesh = SubResource("PlaneMesh_eyan2")
-
 [node name="TestUnit" parent="." instance=ExtResource("3_7jlxy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.78898, 0, -3.59135)
 
@@ -93,3 +95,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.63154, 0, -3.59135)
 
 [node name="TestUnit5" parent="." instance=ExtResource("3_7jlxy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.99065, 0, -3.59135)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_0anmq")
+
+[node name="Plane" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(9.37725, 0, 0, 0, 1, 0, 0, 0, 9.34624, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_sdkfk")
+mesh = SubResource("PlaneMesh_eyan2")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Plane"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Plane/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79397e-08, -0.25, 3.72529e-09)
+shape = SubResource("BoxShape3D_20p7d")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Node3D"]
+
+[node name="Label3D" type="Label3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+text = "THE ROCK"
+font_size = 64
