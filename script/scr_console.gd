@@ -25,7 +25,7 @@ func unit_entered(u : Node3D) -> void :
 	if visible_units.keys().has(unit_id) : return
 
 	visible_units[unit_id] = u.get_parent()
-	print("unit entered : ", u , " id : ", unit_id, " unit node : ", u.get_parent())
+	# print("unit entered : ", u , " id : ", unit_id, " unit node : ", u.get_parent())
 	# debug_units_visible()
 
 
@@ -34,7 +34,7 @@ func unit_exited(u : Node3D) -> void :
 	if !visible_units.keys().has(unit_id) : return
 	
 	visible_units.erase(unit_id)
-	print("unit exited : ", u , " id : ", unit_id, " unit node : ", u.get_parent())
+	# print("unit exited : ", u , " id : ", unit_id, " unit node : ", u.get_parent())
 	# debug_units_visible()
 
 

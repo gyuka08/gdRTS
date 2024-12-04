@@ -1,5 +1,9 @@
 # Change Log
 
+# 2024-12-4
+- Tech
+    - Improved Navigation System
+
 # 2024-12-03
 - Gameplay
     - Now can move units with LMB

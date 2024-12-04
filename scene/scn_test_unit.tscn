@@ -7,7 +7,9 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_muh13"]
 height = 1.8
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[node name="TestUnit" type="CharacterBody3D"]
+collision_layer = 8
+collision_mask = 9
 script = ExtResource("1_aabup")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -15,6 +17,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CylinderShape3D_muh13")
 
 [node name="UnitModel" parent="." instance=ExtResource("1_twk3e")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Selected" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
@@ -25,8 +28,8 @@ texture = ExtResource("3_ypgw4")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_height_offset = 0.25
 avoidance_enabled = true
-debug_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.25
 autostart = true
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
