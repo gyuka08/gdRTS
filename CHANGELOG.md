@@ -1,16 +1,16 @@
 # Change Log
 
-# 2024-12-4
+## 2024-12-4
 - Tech
     - Improved Navigation System
 
-# 2024-12-03
+### 2024-12-03
 - Gameplay
     - Now can move units with LMB
     - Unit Drag Selection Disabled
 
 
-## 2024-12-02
+### 2024-12-02
 - Gameplay
     - Now can Select unit with click-drag box
 
@@ -32,7 +32,7 @@
         - Position.Z = newZoom; is not working in C# somehow
 
 
-## 2024-11-25
+### 2024-11-25
 - Initial Commit
 - Gameplay
     - Implemented Camera Features in C#
